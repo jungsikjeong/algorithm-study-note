@@ -6,6 +6,8 @@ function solution(boxes) {
       stack.push(box);
     }
   }
+
+  return stack;
 }
 
 console.log(solution([2, 2, 5, 5, 5, 1, 1]));
