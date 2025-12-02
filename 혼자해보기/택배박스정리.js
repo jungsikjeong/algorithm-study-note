@@ -8,11 +8,6 @@ function solution(boxes) {
   const result = [];
   for (var i = 0; i < boxes.length; i++) {
     let currentNum = boxes[i];
-
-    if (result.length === 0) {
-      result.push(boxes[i]);
-    }
-
     if (currentNum !== result[result.length - 1]) {
       result.push(boxes[i]);
     }
