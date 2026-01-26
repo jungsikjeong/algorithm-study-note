@@ -20,12 +20,11 @@ class doubleLinkedList {
 
   findNode(index) {
     let count = 0;
-    let currentNode;
-    while (index !== count) {
-      currentNode = this.head;
+    let currentNode = this.head;
+    while (index < count) {
+      currentNode = currentNode.next
       count++;
     }
-
     return currentNode;
   }
 
@@ -68,5 +67,36 @@ class doubleLinkedList {
     this.length++;
   }
 
-  //   todo: remove 구현 해볼것
+  remove(index){
+     if(index === 0 ){
+      if(this.length === 1){
+        this.head = null
+        this.head.prev = null
+      } else {
+        this.head = this.head.next
+        this.head.prev = null
+      }
+      this.length--;
+      return;
+     }
+
+     // index가 길이보다 크거나 같으면 삭제할게 없음
+    if(index >= this.length) return
+
+    // 특정인덱스 삭제
+    const prevNode = this.findNode(index - 1)
+    const removeNode = prevNode.next;
+    const nextNode = removeNode.next;
+    prevNode.next = nextNode
+
+    if(nextNode){
+      nextNode.prev = prevNode
+    }else {
+      this.tail = prevNode
+    }
+
+    this.length--;
+
+  }
 }
+
